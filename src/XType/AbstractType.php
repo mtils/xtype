@@ -10,6 +10,10 @@ abstract class AbstractType{
     const TEMPORAL = 6;
     const MIXED = 7;
 
+    /**
+     * @brief This value can be null (like NOT NULL in databases)
+     * @var bool
+     **/
     protected $canBeNull = TRUE;
 
     protected $defaultValue = NULL;
