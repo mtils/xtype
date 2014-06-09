@@ -16,7 +16,7 @@
   },
   "autoload": {
     "psr-0": {
-      "Xtype": "src/"
+      "XType": "src/"
     }
   },
   "minimum-stability": "dev"
