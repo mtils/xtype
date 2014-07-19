@@ -60,4 +60,16 @@ abstract class AbstractType{
         $class = get_called_class();
         return new $class;
     }
+
+    /**
+     * @brief Use it as a callable for all use cases where you can put a callable
+     *        into a formatter
+     *
+     * @see self::valueToString()
+     * @param mixed $value
+     * @return string
+     **/
+    public function __invoke($value){
+        return $this->valueToString($value);
+    }
 }
