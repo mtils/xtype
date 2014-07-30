@@ -15,7 +15,7 @@ class TemporalType extends AbstractType{
     protected $max = NULL;
 
     public function getGroup(){
-        return self::TEMPORALTYPE;
+        return self::TEMPORAL;
     }
 
     public function getDefaultValue(){
