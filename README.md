@@ -72,6 +72,11 @@ Its on the other hand extremly useful to describe types. So you can build a data
 
 Another possibility is to scaffold forms with xtype.
 
+Factory
+-------
+To simply create an XType you can use XType\TemplateFactory::create($native) which creates a AbstractType by a native php variable.
+
 Caution
 -------
-This lib is in alpha quality. The classes don't do much so it's not that dangerous to use em. So no docs or tests at this time
+This lib is in beta quality. The classes don't do much so it's not that dangerous to use em. So no docs or  at this time
+
