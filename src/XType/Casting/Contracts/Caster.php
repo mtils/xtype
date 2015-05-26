@@ -5,7 +5,7 @@
   * This should be on an atomic level like Datetime, Phone Numbers,
   * adding units to amounts. This is not meant to be a template enginge...
   **/
-interface CasterInterface
+interface Caster
 {
 
     /**
