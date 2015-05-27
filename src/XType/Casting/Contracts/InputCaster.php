@@ -1,4 +1,4 @@
-<?php namespace XType\Casting;
+<?php namespace XType\Casting\Contracts;
 
 /**
  *  An InputCaster casts user input to model data in masses. It receives an
@@ -7,21 +7,6 @@
  **/
 interface InputCaster
 {
-
-    /**
-     * Return the base model class to which the array should be casted
-     *
-     * @return string
-     **/
-    public function modelClass();
-
-    /**
-     * Set the base model class to which the array should be casted
-     *
-     * @param string $class
-     * @return self
-     **/
-    public function setModelClass($class)
 
     /**
      * Cast the data of input to a casted array
