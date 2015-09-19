@@ -72,4 +72,14 @@ abstract class AbstractType{
     public function __invoke($value){
         return $this->valueToString($value);
     }
+
+    public function castToView($value)
+    {
+        return $this->valueToString($value);
+    }
+
+    public function castToModel($value)
+    {
+        return $value;
+    }
 }

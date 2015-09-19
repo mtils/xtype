@@ -19,4 +19,40 @@ interface InputCaster
      **/
     public function castInput(array $input, array $metadata=[]);
 
+    /**
+     * Returns the default chain e.g. ['no_tokens','no_method']
+     *
+     * @return array
+     **/
+    public function chain();
+
+    /**
+     * Set the default chain. You can pass a |-separated string or an array.
+     * Returns itself, not a new instance
+     *
+     * @param string|array $chain
+     * @return self (same instance)
+     **/
+    public function setChain($chain);
+
+    /**
+     * Return a new instance with the passed castername. Pass multiple arguments or
+     * an array to pass multiple casternames. The casternames will be merged
+     * with the chain() casters. If you add a leading ! the passed caster will
+     * be ommited (removed from chain before the new instance is created)
+     *
+     * @param string|array $caster
+     * @return self (New instance)
+     **/
+    public function with($caster);
+
+    /**
+     * Add a caster with name $name
+     *
+     * @param string $name
+     * @param callable $caster
+     * @return self (same instance)
+     **/
+    public function add($name, callable $caster);
+
 }

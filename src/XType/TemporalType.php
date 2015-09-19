@@ -68,4 +68,9 @@ class TemporalType extends AbstractType{
         return $dateTime->format($this->getFormat());
     }
 
+    public function castToModel($value)
+    {
+        return DateTime::createFromFormat($this->getFormat(), $value);
+    }
+
 }
