@@ -1,8 +1,9 @@
 <?php
 
 use XType\Factory\TemplateFactory;
+use PHPUnit\Framework\TestCase;
 
-class TemplateFactoryTest extends PHPUnit_Framework_TestCase{
+class TemplateFactoryTest extends TestCase{
 
     public function testImplementsInterface(){
 
