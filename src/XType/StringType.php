@@ -1,6 +1,7 @@
 <?php namespace XType;
 
-class StringType extends AbstractType{
+class StringType extends AbstractType
+{
 
     protected $defaultValue = '';
 

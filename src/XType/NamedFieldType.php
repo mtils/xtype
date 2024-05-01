@@ -8,7 +8,8 @@ use \Countable;
 use \ArrayIterator;
 use \OutOfBoundsException;
 
-class NamedFieldType extends AbstractType implements ArrayAccess, IteratorAggregate, Countable{
+class NamedFieldType extends AbstractType implements ArrayAccess, IteratorAggregate, Countable
+{
 
     protected $defaultValue = array();
 

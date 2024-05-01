@@ -1,18 +1,24 @@
 <?php
 
-use XType\Factory\TemplateFactory;
+namespace XType\Test\Factory;
+
 use PHPUnit\Framework\TestCase;
+use XType\Factory\TemplateFactory;
+use DateTime;
 
-class TemplateFactoryTest extends TestCase{
+class TemplateFactoryTest extends TestCase
+{
 
-    public function testImplementsInterface(){
-
-        $this->assertInstanceOf('XType\Factory\FactoryInterface', new TemplateFactory);
-
+    public function testImplementsInterface()
+    {
+        $this->assertInstanceOf(
+            'XType\Factory\FactoryInterface',
+            new TemplateFactory
+        );
     }
 
-    public function testCreateBoolean(){
-
+    public function testCreateBoolean()
+    {
         $factory = new TemplateFactory();
 
         $this->assertTrue($factory->canCreate(true));
@@ -28,11 +34,10 @@ class TemplateFactoryTest extends TestCase{
         $this->assertInstanceOf('XType\BoolType', $boolType);
 
         $this->assertFalse($boolType->getDefaultValue());
-
     }
 
-    public function testCreateIntegerType(){
-
+    public function testCreateIntegerType()
+    {
         $factory = new TemplateFactory();
 
         $testInt = 44;
@@ -46,11 +51,10 @@ class TemplateFactoryTest extends TestCase{
         $this->assertEquals($testInt, $intType->getDefaultValue());
 
         $this->assertEquals('int', $intType->getNativeType());
-
     }
 
-    public function testCreateFloatType(){
-
+    public function testCreateFloatType()
+    {
         $factory = new TemplateFactory();
 
         $testFloat = 44.7;
@@ -64,11 +68,10 @@ class TemplateFactoryTest extends TestCase{
         $this->assertEquals($testFloat, $floatType->getDefaultValue());
 
         $this->assertEquals('float', $floatType->getNativeType());
-
     }
 
-    public function testCreateStringType(){
-
+    public function testCreateStringType()
+    {
         $factory = new TemplateFactory();
 
         $testString = 'foo';
@@ -80,11 +83,10 @@ class TemplateFactoryTest extends TestCase{
         $this->assertInstanceOf('XType\StringType', $stringType);
 
         $this->assertEquals($testString, $stringType->getDefaultValue());
-
     }
 
-    public function testCreateTemporalType(){
-
+    public function testCreateTemporalType()
+    {
         $factory = new TemplateFactory();
 
         $testDate = new DateTime('1976-05-31 14:15:00');
@@ -95,12 +97,14 @@ class TemplateFactoryTest extends TestCase{
 
         $this->assertInstanceOf('XType\TemporalType', $temporalType);
 
-        $this->assertEquals($testDate->getTimestamp(), $temporalType->getDefaultValue()->getTimestamp());
-
+        $this->assertEquals(
+            $testDate->getTimestamp(),
+            $temporalType->getDefaultValue()->getTimestamp()
+        );
     }
 
-    public function testCreateSequenceType(){
-
+    public function testCreateSequenceType()
+    {
         $factory = new TemplateFactory();
 
         $testSequence = [];
@@ -112,11 +116,10 @@ class TemplateFactoryTest extends TestCase{
         $this->assertInstanceOf('XType\SequenceType', $sequenceType);
 
         $this->assertEquals($testSequence, $sequenceType->getDefaultValue());
-
     }
 
-    public function testCreateNamedFieldType(){
-
+    public function testCreateNamedFieldType()
+    {
         $factory = new TemplateFactory();
 
         $testDict = [
@@ -132,16 +135,21 @@ class TemplateFactoryTest extends TestCase{
 
         $this->assertInstanceOf('XType\StringType', $dictType->get('foo'));
 
-        $this->assertEquals($testDict['foo'], $dictType->get('foo')->getDefaultValue());
+        $this->assertEquals(
+            $testDict['foo'],
+            $dictType->get('foo')->getDefaultValue()
+        );
 
         $this->assertInstanceOf('XType\BoolType', $dictType->get('bool'));
 
-        $this->assertEquals($testDict['bool'], $dictType->get('bool')->getDefaultValue());
-
+        $this->assertEquals(
+            $testDict['bool'],
+            $dictType->get('bool')->getDefaultValue()
+        );
     }
 
-    public function testCreateComplexType(){
-
+    public function testCreateComplexType()
+    {
         $factory = new TemplateFactory();
 
         $testDict = [
@@ -173,7 +181,10 @@ class TemplateFactoryTest extends TestCase{
 
         $this->assertInstanceOf('XType\NamedFieldType', $itemsSubType);
 
-        $this->assertEquals($testDict['items'][0], $itemsSubType->getDefaultValue());
+        $this->assertEquals(
+            $testDict['items'][0],
+            $itemsSubType->getDefaultValue()
+        );
 
         $ageType = $itemsSubType->get('age');
 
@@ -181,14 +192,19 @@ class TemplateFactoryTest extends TestCase{
 
         $this->assertEquals('int', $ageType->getNativeType());
 
-        $this->assertEquals($testDict['items'][0]['age'], $ageType->getDefaultValue());
+        $this->assertEquals(
+            $testDict['items'][0]['age'],
+            $ageType->getDefaultValue()
+        );
 
         $birthdayType = $itemsSubType->get('birthday');
 
         $this->assertInstanceOf('XType\TemporalType', $birthdayType);
 
-        $this->assertEquals($testDict['items'][0]['birthday']->getTimestamp(), $birthdayType->getDefaultValue()->getTimestamp());
-
+        $this->assertEquals(
+            $testDict['items'][0]['birthday']->getTimestamp(),
+            $birthdayType->getDefaultValue()->getTimestamp()
+        );
     }
 
 }

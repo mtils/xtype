@@ -14,35 +14,40 @@ abstract class AbstractType{
      * @brief This value can be null (like NOT NULL in databases)
      * @var bool
      **/
-    protected $canBeNull = TRUE;
+    protected bool $canBeNull = true;
 
-    protected $defaultValue = NULL;
+    protected $defaultValue = null;
 
-    protected $forceInteraction = FALSE;
+    protected bool $forceInteraction = false;
 
     public abstract function getGroup();
 
     public abstract function valueToString($value);
 
-    public function getCanBeNull(){
+    public function getCanBeNull()
+    {
         return $this->canBeNull;
     }
 
-    public function setCanBeNull($canBeNull){
+    public function setCanBeNull($canBeNull)
+    {
         $this->canBeNull = $canBeNull;
         return $this;
     }
 
-    public function getDefaultValue(){
+    public function getDefaultValue()
+    {
         return $this->defaultValue;
     }
 
-    public function setDefaultValue($defaultValue){
+    public function setDefaultValue($defaultValue)
+    {
         $this->defaultValue = $defaultValue;
         return $this;
     }
 
-    public function getForceInteraction(){
+    public function getForceInteraction()
+    {
         return $this->forceInteraction;
     }
 
@@ -51,12 +56,14 @@ abstract class AbstractType{
         return $this;
     }
 
-    public function __get($name){
+    public function __get($name)
+    {
         $methodName = "get$name";
-        return $this->{$methodName};
+        return $this->{$methodName}();
     }
 
-    public static function create(){
+    public static function create()
+    {
         $class = get_called_class();
         return new $class;
     }
@@ -69,7 +76,8 @@ abstract class AbstractType{
      * @param mixed $value
      * @return string
      **/
-    public function __invoke($value){
+    public function __invoke($value)
+    {
         return $this->valueToString($value);
     }
 

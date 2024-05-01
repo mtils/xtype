@@ -10,12 +10,12 @@ class InputCaster implements InputCasterContract
 {
 
     /**
-     * @var array
+     * @var string[]
      **/
     protected $chain = [];
 
     /**
-     * @var array
+     * @var array<string,callable>
      **/
     protected $casters = [];
 

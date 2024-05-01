@@ -28,7 +28,7 @@ class UnitType extends NumberType{
         if($this->unitPosition == self::PREPEND){
             return $this->unit . str_repeat(' ',$this->valueUnitGap) . $valueString;
         }
-        return $this->value . str_repeat(' ',$this->valueUnitGap) . $this->unit;
+        return $valueString . str_repeat(' ',$this->valueUnitGap) . $this->unit;
     }
 
     public function getUnit(){

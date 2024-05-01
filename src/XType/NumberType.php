@@ -113,6 +113,10 @@ class NumberType extends AbstractType{
         return static::$defaultThousandsSeparator;
     }
 
+    public function setThousandsSeparator($separator){
+        $this->thousandsSeperator = $separator;
+    }
+
     public function getDecimalsCount(){
         if($this->decimalsCount !== NULL){
             return $this->decimalsCount;
