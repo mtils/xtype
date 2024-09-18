@@ -7,6 +7,7 @@ use \BadMethodCallException;
 use \Countable;
 use \ArrayIterator;
 use \OutOfBoundsException;
+use ReturnTypeWillChange;
 
 class NamedFieldType extends AbstractType implements ArrayAccess, IteratorAggregate, Countable
 {
@@ -23,7 +24,9 @@ class NamedFieldType extends AbstractType implements ArrayAccess, IteratorAggreg
         return array_keys($this->namedTypes);
     }
 
-    public function offsetGet($offset){
+    #[ReturnTypeWillChange]
+    public function offsetGet($offset)
+    {
         return $this->namedTypes[$offset];
     }
 
@@ -39,26 +42,35 @@ class NamedFieldType extends AbstractType implements ArrayAccess, IteratorAggreg
         return $this;
     }
 
-    public function offsetSet($offset, $type){
+    #[ReturnTypeWillChange]
+    public function offsetSet($offset, $type)
+    {
         if(!$type instanceof AbstractType){
             throw new BadMethodCallException('You can only add AbstractType instances');
         }
         $this->namedTypes[$offset] = $type;
     }
 
-    public function offsetExists($offset){
+    #[ReturnTypeWillChange]
+    public function offsetExists($offset)
+    {
         return isset($this->namedTypes[$offset]);
     }
 
-    public function offsetUnset($offset){
+    #[ReturnTypeWillChange]
+    public function offsetUnset($offset)
+    {
         unset($this->namedTypes[$offset]);
     }
 
+    #[ReturnTypeWillChange]
     public function count(){
         return count($this->namedTypes);
     }
 
-    public function getIterator(){
+    #[ReturnTypeWillChange]
+    public function getIterator()
+    {
         return new ArrayIterator($this->namedTypes);
     }
 
